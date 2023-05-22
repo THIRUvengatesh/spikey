@@ -1,82 +1,116 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<meta charset="ISO-8859-1">
-<title>best Forever</title>
-
-
-<style type="text/css">
-body{
-background-image : url('https://images.hdqwalls.com/download/material-design-colors-8k-2q-1920x1080.jpg');
-background-repeat: no-repeat;	
-	
-}
-#container{
-width :90%;
-height: 700px;
-margin : auto;
-}
-.poni{ 
-margin-top : 100px ;
-width : 50% ;
-/* border : 2px black solid; */
-float : left ;
-}
-#head  {
- /* background-color : rgb(128, 222, 234); */
-}
-#tail{
-	background-color : white;
-/*     filter: blur(8px);  */
-}
-h1{
-	font-size : 100px ;
-	padding-left : 100px;
-}
-p{
-	padding-left : 100px;
-	font-size : 60px ;
-}
-#content{
-	font-size : 20px ;
-	padding-left : 100px;
-}
-</style>
+    <title>FLAMES - Love Theme</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #e53935;
+        }
+        
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            margin-top: 200px;
+            background-color: #ffebee; /* Light pink background */
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333333;
+        }
+        
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #dddddd;
+            border-radius: 3px;
+        }
+        
+        button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #e91e63; /* Pink button background */
+            color: #ffffff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        
+        .result {
+            margin-top: 30px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #e91e63; /* Pink text color */
+        }
+    </style>
 </head>
 <body>
-<div>
-<div id='container'>
-	<div class= 'poni' id='head'>
-		<div><h1>piggy</h1></div>
-		<div><p>Lets change the world with us</p></div>
-		<div id ='content'>Connect people like you with us</div>
-		<div id ='content'>Willing is the way to won</div>
-		<div id ='content'>  |</div>
-		<div id ='content'>Contect : spikevenki@gmail.com </div>
-		
-	</div>
-	<!--<div class= 'poni' id='head'>
-		<div><h1>What the fuck</h1></div>
-		<div><p>gopal oru mental</p></div>
-		<div id ='content'>Avan oru paithiyakaran</div>
-		<div id ='content'>He ia a Muttal</div>
-		<div id ='content'>  |</div>
-		<!--<div id ='content'>Contect : spikevenki@gmail.com </div>-->
-		
-	</div>-->
-	<div class= 'poni' id='tail'> 
-		<div><input ></div>
-	</div>
-</div>
-</div>
+    <div class="container">
+        <h1>FLAMES</h1>
+        <div id="form-container">
+            <label for="your-name">Your Name:</label>
+            <input type="text" id="your-name" required>
+            <label for="partner-name">Partner's Name:</label>
+            <input type="text" id="partner-name" required>
+            <button onclick="calculateFlames()">Calculate</button>
+        </div>
+        <div id="result-container" style="display: none;">
+            <div class="result" id="flames-result"></div>
+            <button onclick="resetForm()">Play Again</button>
+        </div>
+    </div>
 
-<iframe
-    allow="microphone;"
-    width="350"
-    height="430"
-    src="https://console.dialogflow.com/api-client/demo/embedded/2983028a-9f83-4d41-8396-d239dc13a89d">
-</iframe>
+    <script>
+        function calculateFlames() {
+            var yourName = document.getElementById("your-name").value.toLowerCase().replace(/\s/g, "");
+            var partnerName = document.getElementById("partner-name").value.toLowerCase().replace(/\s/g, "");
 
+            var flamesCount = yourName.length + partnerName.length;
+
+            // Remove common letters
+            for (var i = 0; i < yourName.length; i++) {
+                for (var j = 0; j < partnerName.length; j++) {
+                    if (yourName[i] === partnerName[j]) {
+                        yourName = yourName.replace(yourName[i], "");
+                        partnerName = partnerName.replace(partnerName[j], "");
+                    }
+                }
+            }
+
+            // Calculate the remaining letters and determine the FLAMES result
+            var remainingCount = yourName.length + partnerName.length;
+            var flamesWords = ["Friendship", "Love", "Affection", "Marriage", "Enemy", "Sibling"];
+            var index = remainingCount % flamesWords.length - 1;
+
+            if (index < 0) {
+                index = flamesWords.length - 1;
+            }
+
+            var result = flamesWords[index];
+
+            // Display the result
+            document.getElementById("form-container").style.display = "none";
+            document.getElementById("result-container").style.display = "block";
+            document.getElementById("flames-result").innerHTML = "Result: " + result;
+        }
+
+        function resetForm() {
+            document.getElementById("your-name").value = "";
+            document.getElementById("partner-name").value = "";
+            document.getElementById("form-container").style.display = "block";
+            document.getElementById("result-container").style.display = "none";
+        }
+    </script>
 </body>
 </html>
