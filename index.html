@@ -1,116 +1,107 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>FLAMES - Love Theme</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f7f7f7;
-            text-align: center;
-        }
-        
-        h1 {
-            color: #e53935;
-        }
-        
-        .container {
-            max-width: 400px;
-            margin: 0 auto;
-            padding: 20px;
-            margin-top: 200px;
-            background-color: #ffebee; /* Light pink background */
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 10px;
-            color: #333333;
-        }
-        
-        input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #dddddd;
-            border-radius: 3px;
-        }
-        
-        button {
-            display: inline-block;
-            padding: 10px 20px;
-            margin-top: 20px;
-            background-color: #e91e63; /* Pink button background */
-            color: #ffffff;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-        }
-        
-        .result {
-            margin-top: 30px;
-            font-size: 20px;
-            font-weight: bold;
-            color: #e91e63; /* Pink text color */
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>FLAMES</h1>
-        <div id="form-container">
-            <label for="your-name">Your Name:</label>
-            <input type="text" id="your-name" required>
-            <label for="partner-name">Partner's Name:</label>
-            <input type="text" id="partner-name" required>
-            <button onclick="calculateFlames()">Calculate</button>
-        </div>
-        <div id="result-container" style="display: none;">
-            <div class="result" id="flames-result"></div>
-            <button onclick="resetForm()">Play Again</button>
-        </div>
-    </div>
-
-    <script>
-        function calculateFlames() {
-            var yourName = document.getElementById("your-name").value.toLowerCase().replace(/\s/g, "");
-            var partnerName = document.getElementById("partner-name").value.toLowerCase().replace(/\s/g, "");
-
-            var flamesCount = yourName.length + partnerName.length;
-
-            // Remove common letters
-            for (var i = 0; i < yourName.length; i++) {
-                for (var j = 0; j < partnerName.length; j++) {
-                    if (yourName[i] === partnerName[j]) {
-                        yourName = yourName.replace(yourName[i], "");
-                        partnerName = partnerName.replace(partnerName[j], "");
-                    }
-                }
-            }
-
-            // Calculate the remaining letters and determine the FLAMES result
-            var remainingCount = yourName.length + partnerName.length;
-            var flamesWords = ["Friendship", "Love", "Affection", "Marriage", "Enemy", "Sibling"];
-            var index = remainingCount % flamesWords.length - 1;
-
-            if (index < 0) {
-                index = flamesWords.length - 1;
-            }
-
-            var result = flamesWords[index];
-
-            // Display the result
-            document.getElementById("form-container").style.display = "none";
-            document.getElementById("result-container").style.display = "block";
-            document.getElementById("flames-result").innerHTML = "Result: " + result;
-        }
-
-        function resetForm() {
-            document.getElementById("your-name").value = "";
-            document.getElementById("partner-name").value = "";
-            document.getElementById("form-container").style.display = "block";
-            document.getElementById("result-container").style.display = "none";
-        }
-    </script>
-</body>
-</html>
+<!doctype html>
+<html> 
+ <head> 
+   <script>
+     $(document).ready(function(){
+  $('#nav-icon').click(function(){
+    $(this).toggleClass('open');
+    $(".overlay").toggleClass("open");
+    $(".overlay a").toggleClass("open");
+  $(".overlay p").toggleClass("open");
+  });
+  
+  // Scroll Reveal
+  // ScrollReveal().reveal('.services .grid .card');
+  
+  $('.square.blue').on('inview', function(event, isInView) {
+    if (isInView) {
+      // element is now visible in the viewport
+      $(this).addClass("in-view");
+    } else {
+      // element has gone out of viewport
+      $(this).removeClass("in-view");
+    }
+  });
+});
+ 
+     
+       
+   </script>
+  <style>
+     
+       
+   </style> 
+ </head> 
+ <body> 
+  <div class="background"> 
+   <nav> 
+    <div class="navWrapper"> <a href="" id="logo">SRIVARI</a> 
+     <div class="right"> 
+      <div id="nav-icon"> <span></span> <span></span> <span></span> 
+      </div> 
+      <div class="overlay"> 
+       <div class="overlayContent"> <a href="#" id="services">Services</a> <a href="#" id="work">Our work</a> <a href="#" id="contact">Contact</a> 
+        <p>Copyright 2018</p> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </nav> 
+   <div class="header"> 
+    <div class="headerWrapper"> 
+     <h6>we do</h6> 
+     <h1>Web Design <br> &amp; Development</h1> 
+     <div class="circle blue"></div> 
+     <div class="square red"></div> 
+     <div class="triangle green">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="0 0 177.893 177.893">
+       <defs>
+        <style>.a{fill:url(#a);}.b{filter:url(#b);}</style>
+        <lineargradient id="a" x1="0.5" x2="0.5" y2="1" gradientunits="objectBoundingBox">
+         <stop offset="0" stop-color="#3dbed5" />
+         <stop offset="1" stop-color="#3dd55a" />
+        </lineargradient>
+        <filter id="b" x="0" y="0" width="177.893" height="177.893" filterunits="userSpaceOnUse">
+         <feoffset dx="3" dy="3" input="SourceAlpha" />
+         <fegaussianblur stddeviation="7.5" result="c" />
+         <feflood flood-color="#3dd55a" flood-opacity="0.396" />
+         <fecomposite operator="in" in2="c" />
+         <fecomposite in="SourceGraphic" />
+        </filter>
+       </defs><g class="b" transform="matrix(1, 0, 0, 1, 0, 0)">
+        <path class="a" d="M136.727,21104.928l-50.222,100h100Z" transform="translate(-8978.23 -19029.24) rotate(-25)" />
+       </g>
+      </svg>
+     </div> 
+     <div class="circle orange"></div> 
+    </div> 
+   </div> 
+  </div> 
+  <div class="section services"> 
+   <div class="sectionWrapper"> 
+    <h6>what we offer</h6> 
+    <h2>Our services</h2> 
+    <p class="description">I am developing these skills from when I was 12 years old. I still love what I do and I would love to share my knowledge with the world.</p> 
+    <div class="square blue"></div> 
+    <div class="grid"> <!-- Web Development --> 
+     <div class="card"> 
+      <h3>Web Development</h3> 
+      <p>I create websites and web services.</p> 
+     </div> <!-- Web Design --> 
+     <div class="card"> 
+      <h3>Web Design</h3> 
+      <p>I design webpages and web platforms.</p> 
+     </div> <!-- Branding --> 
+     <div class="card"> 
+      <h3>Branding</h3> 
+      <p>I design brand guidelines and brand styles.</p> 
+     </div> <!-- Social Media Marketing --> 
+     <div class="card"> 
+      <h3>Social Media Marketing</h3> 
+      <p>I run a social media business.</p> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+ 
+</body></html>
